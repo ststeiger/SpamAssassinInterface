@@ -64,7 +64,15 @@ namespace SpamAssassinInterface
                 }
                 while (received > 0);
 
-                spamAssassinSocket.Shutdown(System.Net.Sockets.SocketShutdown.Both);
+				try
+				{
+					if(spamAssassinSocket.Connected)
+						spamAssassinSocket.Shutdown(System.Net.Sockets.SocketShutdown.Both);
+				}
+				catch(System.Exception ex)
+				{
+					System.Console.WriteLine (ex.Message);
+				}
 
                 return ParseResponse(receivedMessage);
             }

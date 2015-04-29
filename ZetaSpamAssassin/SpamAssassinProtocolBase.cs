@@ -192,7 +192,17 @@ namespace ZetaSpamAssassin
 				}
 				while ( received > 0 );
 
-				spamAssassinSocket.Shutdown( SocketShutdown.Both );
+				try
+				{
+					if(spamAssassinSocket.Connected)
+						spamAssassinSocket.Shutdown( SocketShutdown.Both );
+				}
+				catch(System.Exception ex)
+				{
+					System.Console.WriteLine ("Error !");
+					System.Console.WriteLine (ex.Message);
+				}
+
 
 				if ( request.Command!=SpamAssassinCommands.Skip &&
 					!receivedMessage.StartsWith(
