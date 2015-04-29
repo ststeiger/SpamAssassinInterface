@@ -1,7 +1,8 @@
 ﻿
 namespace SpamAssassinInterface
 {
-    
+
+    // http://stackoverflow.com/questions/5038574/spamassassin-check-score-c-sharp-code
     public class SimpleSpamAssassin
     {
 
