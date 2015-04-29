@@ -46,6 +46,9 @@ namespace SpamAssassinInterface
                 , System.Net.Sockets.SocketType.Stream
                 , System.Net.Sockets.ProtocolType.Tcp))
             {
+                // Firewall: allow incoming and outgoing requests
+                // iptables -A INPUT -j ACCEPT
+                // iptables -A OUTPUT -j ACCEPT
                 spamAssassinSocket.Connect(serverIP, 783);
                 spamAssassinSocket.Send(messageBuffer);
                 spamAssassinSocket.Shutdown(System.Net.Sockets.SocketShutdown.Send);
@@ -55,6 +58,7 @@ namespace SpamAssassinInterface
                 do
                 {
                     byte[] receiveBuffer = new byte[1024];
+                    // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
                     received = spamAssassinSocket.Receive(receiveBuffer);
                     receivedMessage += System.Text.Encoding.ASCII.GetString(receiveBuffer, 0, received);
                 }
