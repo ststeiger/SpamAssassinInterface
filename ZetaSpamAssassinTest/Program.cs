@@ -9,7 +9,13 @@ namespace ZetaSpamAssassinTest
     // http://www.codeproject.com/Articles/13106/A-C-Wrapper-for-the-SpamAssassin-Protocol
 	internal static class Program
 	{
-		
+
+
+        // Options in /etc/default/spamassassin
+        // iptables -A INPUT -j ACCEPT
+        // iptables -A OUTPUT -j ACCEPT
+        // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
+        
 
 		/// <summary>
 		/// Main entry point.
