@@ -58,7 +58,7 @@ namespace SpamAssassinInterface
                 do
                 {
                     byte[] receiveBuffer = new byte[1024];
-                    // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
+                    // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24 --allow-tell
                     received = spamAssassinSocket.Receive(receiveBuffer);
                     receivedMessage += System.Text.Encoding.ASCII.GetString(receiveBuffer, 0, received);
                 }

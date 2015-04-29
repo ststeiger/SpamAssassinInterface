@@ -25,7 +25,7 @@ namespace ZetaSpamAssassinTest
         // iptables -L
 
         // Options in /etc/default/spamassassin
-        // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
+        // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24 --allow-tell
 
 
 		/// <summary>
