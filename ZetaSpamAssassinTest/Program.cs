@@ -11,11 +11,22 @@ namespace ZetaSpamAssassinTest
 	{
 
 
-        // Options in /etc/default/spamassassin
+        // http://serverfault.com/questions/183461/how-do-i-allow-outgoing-connections-via-iptables
         // iptables -A INPUT -j ACCEPT
         // iptables -A OUTPUT -j ACCEPT
-        // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
         
+        // Is the service you are running listening only on localhost? Run
+        // netstat -ltn
+        // If you see a line like 0.0.0.0:2194 then you are ok. 
+        // If you see 127.0.0.1:2194 then you are listening only on local connections 
+        // (or :::2194 and ::1:2194 respectively for IPv6 addresses, shown as tcp6 lines).
+        
+        // What are the current iptables rules?
+        // iptables -L
+
+        // Options in /etc/default/spamassassin
+        // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
+
 
 		/// <summary>
 		/// Main entry point.
@@ -30,6 +41,7 @@ namespace ZetaSpamAssassinTest
 			{
 				SpamAssassinCheckArgs e = new SpamAssassinCheckArgs();
 				e.TextToCheck = @"This is certainly no Spam.";
+                e.TextToCheck = @"You need penis enlargement !";
 
 				SpamAssassinCheckResult r = sap.ExecuteCheck( e );
 

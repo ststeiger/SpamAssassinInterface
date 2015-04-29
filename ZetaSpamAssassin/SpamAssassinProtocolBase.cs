@@ -161,13 +161,13 @@ namespace ZetaSpamAssassin
                 AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp ) 
                 )
 			{
-				spamAssassinSocket.Connect(
-					serverName,
-					serverPort );
+                // Firewall: allow incoming and outgoing requests
+                // iptables -A INPUT -j ACCEPT
+                // iptables -A OUTPUT -j ACCEPT
+                spamAssassinSocket.Connect(serverName, serverPort);
 
 				byte[] messageBuffer =
-					Encoding.ASCII.GetBytes(
-					request.RawPacket );
+					System.Text.Encoding.ASCII.GetBytes(request.RawPacket );
 
 				spamAssassinSocket.Send( messageBuffer );
 
@@ -178,6 +178,8 @@ namespace ZetaSpamAssassin
 				do
 				{
 					byte[] receiveBuffer = new byte[1024];
+
+                    // spamd -D --listen 192.168.1.11 --allowed-ips=192.168.1.0/24
 					received = spamAssassinSocket.Receive( receiveBuffer );
 					LogCentral.Current.LogDebug(
 						string.Format(
