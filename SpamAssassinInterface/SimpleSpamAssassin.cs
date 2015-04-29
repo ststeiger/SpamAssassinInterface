@@ -3,6 +3,12 @@ namespace SpamAssassinInterface
 {
 
     // http://stackoverflow.com/questions/5038574/spamassassin-check-score-c-sharp-code
+    // iptables -A OUTPUT -p tcp -d <server2ip> --dport 2194 -j ACCEPT
+    // iptables -A INPUT -p tcp -s <server1ip> --dport 2194 -j ACCEPT
+
+    // netstat -ltn
+    // iptables -A INPUT -j ACCEPT
+    // iptables -A OUTPUT -j ACCEPT
     public class SimpleSpamAssassin
     {
 

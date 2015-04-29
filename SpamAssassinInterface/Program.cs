@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Windows.Forms;
+
 
 namespace SpamAssassinInterface
 {
+
+
     static class Program
     {
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
+        [System.STAThread]
         static void Main()
         {
 #if false
@@ -19,8 +23,13 @@ namespace SpamAssassinInterface
             return;
 #endif
 
-            var lol = SimpleSpamAssassin.GetReport("192.168.1.11", "hello world !");
-            System.Console.WriteLine(lol);
-        }
-    }
-}
+            System.Collections.Generic.List<SimpleSpamAssassin.RuleResult> Report = 
+                SimpleSpamAssassin.GetReport("192.168.1.11", "hello world !");
+            System.Console.WriteLine(Report);
+        } // End Sub Main
+
+
+    } // End Class Program
+
+
+} // End Namespace SpamAssassinInterface 

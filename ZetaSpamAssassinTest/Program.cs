@@ -2,22 +2,11 @@
 namespace ZetaSpamAssassinTest
 {
 	
-	using System;
-	using System.Configuration;
 	using System.Diagnostics;
-
 	using ZetaSpamAssassin;
 
 
-	/// <summary>
-	/// Console application to test the SpamAssassinXxx classes.
-	/// </summary>
-	/// <remarks>
-	/// Developed 2006-02-16.
-	/// For questions and comments, please contact Uwe Keim at
-	/// mailto:uwe.keim@zeta-software.de.
-	/// Also, see my private webcam and weblog at http://www.magerquark.de
-	/// </remarks>
+    // http://www.codeproject.com/Articles/13106/A-C-Wrapper-for-the-SpamAssassin-Protocol
 	internal static class Program
 	{
 		
@@ -29,8 +18,8 @@ namespace ZetaSpamAssassinTest
 			string[] commandLineArgs )
 		{
 			SpamAssassinProtocol sap = new SpamAssassinProtocol(
-				ConfigurationManager.AppSettings["spamAssassinServerName"] );
-
+                System.Configuration.ConfigurationManager.AppSettings["spamAssassinServerName"]);
+            
 			if ( true )
 			{
 				SpamAssassinCheckArgs e = new SpamAssassinCheckArgs();
