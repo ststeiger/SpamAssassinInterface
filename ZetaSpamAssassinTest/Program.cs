@@ -41,7 +41,34 @@ namespace ZetaSpamAssassinTest
 			{
 				SpamAssassinCheckArgs e = new SpamAssassinCheckArgs();
 				e.TextToCheck = @"This is certainly no Spam.";
-                e.TextToCheck = @"You need penis enlargement !";
+                e.TextToCheck = @"
+http://www.rickconner.net/spamweb/classic-spam.html
+Nigerian 419 scam
+
+ATTN.: sir,
+I got your contact through email business directory
+and decided to send my proposal to you. I am MUYIWA
+IGE the first son of the late chief BOLA IGE,the
+attorney general of th e fedeal rebulic of Nigeria who
+was killed by hired assasin on the 23rd of december
+2001 by an unidentified gun men believed to be link to
+our government of which it is a daily case going on in
+my country;s dailies now.
+
+Two months ago he was attempted to be murdered but
+unfortunately God speared his life for us.It was then
+he had to reveal some vital informations as regards
+his life to me before he was finally killed in
+december. All accounts belonging to my father both
+local and abroad had been frozen and his investments seized by the
+government believing in thier false allegation that he made away of $2
+billion dollars of 
+";
+
+				e.TextToCheck = @"Buy now ! Viaga ! Cialis ! Penis enlargement...";
+
+				// e.TextToCheck = @"This is certainly no Spam.";
+
 
 				SpamAssassinCheckResult r = sap.ExecuteCheck( e );
 
